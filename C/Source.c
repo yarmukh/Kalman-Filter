@@ -2,29 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <stdlib.h>
-/*Задача:
-Реализовать структуру matrix, которая включает в себя следующие поля:
-Количество строк
-Количество столбцов
-Двумерный массив
-Максимальный размер структуры – 10x10.
 
-При этом, реализовать следующие методы:
-
-bool init_mtx( matrix* mtx, int n_rows, int n_cols);
-
-bool sum_mtx( matrix* mtx1, matrix* mtx2, matrix* res);
-
-bool product_mtx( matrix* mtx1, matrix* mtx2, matrix* res);
-
-void print_mtx( matrix* mtx1, matrix* mtx2, matrix* res);
-
-bool det_mtx( matrix* mtx, double* det );
-
-bool inv_mtx( matrix* mtx, matrix* res );
-
- Каждая функция возвращает true или false для отработки ошибок.
- */
 
 typedef struct matrix {
 	int row;
@@ -231,7 +209,7 @@ bool create_I(int n, matrix* I)
 typedef struct Kalman_filter
 {
 	matrix X; //x, y, Vx, Vy
-	matrix P; //матрица недоверия вектору состояния Х
+	matrix P; //Г¬Г ГІГ°ГЁГ¶Г  Г­ГҐГ¤Г®ГўГҐГ°ГЁГї ГўГҐГЄГІГ®Г°Гі Г±Г®Г±ГІГ®ГїГ­ГЁГї Г•
 } Kalman_filter;
 
 void default_init_kf(Kalman_filter* kf) {
@@ -280,7 +258,7 @@ void init_kf(Kalman_filter* kf, double std_x, double std_y, double std_vx, doubl
 
 void predict(Kalman_filter* kf, double dt, double std_a) 
 {
-	matrix F; //матрица перехода
+	matrix F; //Г¬Г ГІГ°ГЁГ¶Г  ГЇГҐГ°ГҐГµГ®Г¤Г 
 	F.col = 4;
 	F.row = 4;
 	for(int i = 0; i < 4; i++) {
